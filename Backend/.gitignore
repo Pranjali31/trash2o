@@ -1,0 +1,13 @@
+**/venv
+*.log
+*.pot
+*.pyc
+__pycache__/
+.env
+.venv
+.sqlite3
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/

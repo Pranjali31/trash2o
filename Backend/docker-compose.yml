@@ -1,0 +1,35 @@
+version: '3.0'
+
+services:
+    web:
+        build: .
+        container_name: group4_ase
+        command: sh -c "python manage.py makemigrations &&
+                        python manage.py migrate &&
+                        python manage.py runserver 0.0.0.0:8000"
+        # command: sh -c "python manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - .:/group4_ase
+        ports:
+            - "9400:8000"
+        
+        restart: unless-stopped       
+        depends_on: 
+            - db     
+    
+
+    db:
+        image: postgres
+        container_name: group4_db
+        restart: unless-stopped
+        environment:
+          - POSTGRES_DB=postgres
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+        volumes:
+            - dbdata:/var/lib/postgresql/data/
+   
+
+        
+volumes:
+    dbdata:
