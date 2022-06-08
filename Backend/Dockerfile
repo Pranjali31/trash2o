@@ -10,7 +10,7 @@ ENV PYTHONNUNBUFFERED 1
 # create a root direcotry for our project in the container
 RUN mkdir /group4_ase
 
-# Set the working directory to /hr_leave_grant_project
+# Set the working directory to /group4_ase
 WORKDIR /group4_ase
 
 # Copy the current directory contents into the container
