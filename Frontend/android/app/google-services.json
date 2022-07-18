@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "79789947016",
+    "project_id": "trash2o",
+    "storage_bucket": "trash2o.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79789947016:android:3d40b17c392bd40f21473d",
+        "android_client_info": {
+          "package_name": "com.trash2o"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79789947016-5figtpai2nmi0t257df0lraf78vbr2g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVgHu6aL6iDPEj9aEgwX_UQXAdWJ_FEhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79789947016-5figtpai2nmi0t257df0lraf78vbr2g1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
