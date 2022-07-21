@@ -156,6 +156,13 @@ REST_FRAMEWORK = {
     ],
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'pro.turbo-smtp.com'
+EMAIL_USE_TLS = False
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'itstaff@caricom.org'
+EMAIL_HOST_PASSWORD = 'iis123***'
+DEFAULT_FROM_EMAIL = 'trash2o@caricom.org'
 SITE_ID = 1
 

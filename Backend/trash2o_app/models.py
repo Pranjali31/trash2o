@@ -5,7 +5,8 @@ class Refill_Point(models.Model):
   'Water Refill locations'
   description = models.CharField(max_length=200)
   location = models.CharField(max_length=200)
-
+  category = models.CharField(max_length=50, default=None)
+  
   class Meta:
     ordering = ['description']
 
