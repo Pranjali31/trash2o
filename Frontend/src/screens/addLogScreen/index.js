@@ -1,19 +1,10 @@
-import {View, Text, StyleSheet, Dimensions, Alert} from 'react-native';
-import React, {useState, useLayoutEffect} from 'react';
-import Colors from '../../theme/colors';
 import {Button, Slider} from '@rneui/themed';
-import {
-  CustomButton,
-  HeaderLeft,
-  HeaderRight,
-  Icons,
-} from '../../components/atoms';
+import React, {useState} from 'react';
+import {Alert, Dimensions, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  resetDailyConsumption,
-  updateDailyConsumption,
-} from '../../store/actions';
+import {CustomButton, Icons} from '../../components/atoms';
+import {addWater} from '../../store/actions';
+import Colors from '../../theme/colors';
 
 const AddLogScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -21,34 +12,48 @@ const AddLogScreen = ({navigation}) => {
   const [quantitySelected, setQuantitySelected] = useState(12);
   const [cupsSelected, setCupsSelected] = useState(1);
 
+  const userAuth = useSelector(state => state.trashApp.userAuth);
+
   const updateMultiplier = async direction => {
     if (direction === 'more') {
       await setCupsSelected(cupsSelected + 1);
     }
     if (direction === 'less') {
-      await setCupsSelected(cupsSelected - 1);
+      if (cupsSelected > 1) {
+        await setCupsSelected(cupsSelected - 1);
+      }
     }
+  };
+
+  const resetData = async () => {
+    await setQuantitySelected(12);
+    await setCupsSelected(1);
   };
 
   const addWaterProgress = async () => {
     const ouncesSelected = +(quantitySelected * cupsSelected);
     const updatedDailyConsumption = ouncesSelected;
-    if (ouncesSelected < 0) {
-      await dispatch(resetDailyConsumption());
-    } else {
-      await dispatch(updateDailyConsumption(updatedDailyConsumption));
+    let logData = {
+      email: userAuth.email,
+      waterQty: quantitySelected,
+      totalCups: cupsSelected,
+      totalWaterSaved: ouncesSelected,
+    };
+    if (ouncesSelected > 0) {
+      await dispatch(addWater(logData));
       Alert.alert(
         'Log Added Successfully',
         'Your  cuurent intake is : ' + updatedDailyConsumption + ' OZ',
       );
+      resetData();
     }
-    await setQuantitySelected(1);
   };
 
   return (
     <View style={styles.screen}>
+      <Text style={styles.headerStyle}>Tras.h20</Text>
       <View style={styles.pickerSection}>
-        <Text style={styles.title}>Cup Size?</Text>
+        <Text style={styles.title}>Your Container Size?</Text>
 
         <View style={styles.sliderStyle}>
           <Slider
@@ -104,8 +109,8 @@ const AddLogScreen = ({navigation}) => {
             title="Reset Log"
             style={styles.focusButton}
             color={Colors.accentColorBlue}
-            buttonStyle={{backgroundColor: 'red'}}
-            onPress={() => dispatch(resetDailyConsumption())}
+            buttonStyle={{backgroundColor: Colors.lightRed}}
+            onPress={() => resetData()}
           />
         </View>
       </View>
@@ -141,6 +146,7 @@ const styles = StyleSheet.create({
     color: Colors.accentColorBlue,
     padding: '1%',
     paddingBottom: '5%',
+    marginVertical: '1%',
   },
   pickerSection: {
     marginTop: 100,
@@ -181,5 +187,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '40%',
+  },
+  headerStyle: {
+    alignSelf: 'center',
+    fontSize: 30,
+    marginBottom: -30,
+    marginTop: 20,
+    fontWeight: 'bold',
   },
 });

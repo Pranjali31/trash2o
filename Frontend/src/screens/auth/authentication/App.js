@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Authentication from './screens/Authentication';
 import Authenticated from './screens/Authenticated';
 import auth from '@react-native-firebase/auth';
@@ -6,7 +6,7 @@ import auth from '@react-native-firebase/auth';
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
-  auth().onAuthStateChanged((user) => {
+  auth().onAuthStateChanged(user => {
     if (user) {
       setAuthenticated(true);
     } else {
@@ -25,6 +25,7 @@ export default function App() {
   const signin = (email, password) => {
     try {
       auth().signInWithEmailAndPassword(email, password);
+      console.log('Error');
     } catch (error) {
       alert(error);
     }
