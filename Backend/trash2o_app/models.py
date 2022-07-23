@@ -6,6 +6,8 @@ class Refill_Point(models.Model):
   description = models.CharField(max_length=200)
   location = models.CharField(max_length=200)
   category = models.CharField(max_length=50, blank=True, null=True)
+  latitude = models.CharField(max_length=50, blank=True, null=True)
+  longitude = models.CharField(max_length=50, blank=True, null=True)
   
   class Meta:
     ordering = ['description']
