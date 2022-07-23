@@ -9,5 +9,5 @@ class RefillAdmin(admin.ModelAdmin):
 
 @admin.register(Container)
 class ContainerAdmin(admin.ModelAdmin):
-  list_display=('quantity', 'category','brand', 'date_added')
+  list_display=('user','quantity', 'category','brand', 'date_added')
   search_fields = ('category', 'brand')
