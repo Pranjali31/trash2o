@@ -1,12 +1,58 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+} from 'react-native';
+import auth from '@react-native-firebase/auth';
+import {updateUserAuthentication} from '../../../store/actions';
+import {useDispatch} from 'react-redux';
 
-const Authentication = ({navigation, route}) => {
+const Authentication = ({navigation}) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigateToHome = () => {
     navigation.navigate('Root');
+  };
+
+  const updateUserLogState = async (userEmail, userPassword) => {
+    let user = {
+      email: userEmail,
+      password: userPassword,
+    };
+    await dispatch(updateUserAuthentication(user));
+  };
+
+  const createUser = async () => {
+    try {
+      await auth().createUserWithEmailAndPassword(email, password);
+      // navigation.naviagte('Root');
+    } catch (error) {
+      Alert.alert('', JSON.stringify(error));
+    }
+  };
+
+  const signin = async () => {
+    try {
+      console.log('email', email);
+      await auth().signInWithEmailAndPassword(email, password);
+      Alert.alert('Success');
+      navigateToHome();
+    } catch (error) {
+      console.log('error', error);
+      Alert.alert('', JSON.stringify(error));
+    }
+  };
+
+  const onSkipPress = () => {
+    updateUserLogState('test@123.com', '123');
+    navigateToHome();
   };
 
   return (
@@ -32,13 +78,18 @@ const Authentication = ({navigation, route}) => {
       <View style={styles.buttons}>
         <Button
           title="signin"
-          onPress={() => route.params.signin(email, password, navigateToHome)}
+          onPress={() => signin(email, password, navigateToHome)}
         />
-        <Button
-          title="Create"
-          onPress={() => route.params.createUser(email, password)}
-        />
+        <Button title="Create" onPress={() => createUser(email, password)} />
       </View>
+      <TouchableHighlight
+        underlayColor={'blue'}
+        activeOpacity={0.1}
+        onPress={() => {
+          onSkipPress();
+        }}>
+        <Text style={{color: 'black', paddingTop: 10}}>SKIP</Text>
+      </TouchableHighlight>
     </View>
   );
 };

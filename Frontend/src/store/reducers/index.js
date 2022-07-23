@@ -1,4 +1,11 @@
-import {RESET_WATER, APP_READY, ADJUST_WATER, USER_AUTH} from '../Constants';
+import {
+  RESET_WATER,
+  APP_READY,
+  ADJUST_WATER,
+  USER_AUTH,
+  ADD_WATER,
+  GET_LOGS,
+} from '../Constants';
 
 const initialState = {
   waterProgress: 0,
@@ -26,6 +33,16 @@ const CountReducer = (state = initialState, action) => {
       return {
         ...state,
         userAuth: action.payload,
+      };
+    case ADD_WATER:
+      return {
+        ...state,
+        addWater: action.payload,
+      };
+    case GET_LOGS:
+      return {
+        ...state,
+        addWater: action.payload,
       };
     default:
       return state;

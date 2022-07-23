@@ -5,6 +5,9 @@ const AboutUs = () => {
   return (
     <View>
       <Text>About Us</Text>
+      <Text style={}  > //formating
+              Tras.h20 is a one stop solution for getting to know the refill stations that are avaible nearby as well as recording the data of the usage and frequency of the refilling ,For each activity perfomred few points are added into the users account which could be used to redeem for a coupon from the ones that are availble. 
+            </Text>
     </View>
   );
 };

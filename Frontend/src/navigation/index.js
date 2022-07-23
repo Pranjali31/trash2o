@@ -2,14 +2,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import * as React from 'react';
 import {HeaderRight} from '../components/atoms';
 import {CustomDrawer} from '../components/molecules';
-import {
-  AboutUs,
-  Home,
-  Information,
-  LeaderBoards,
-  Report,
-  Rewards,
-} from '../screens';
+import {AboutUs, Home, LeaderBoards, Report, Rewards} from '../screens';
 import Colors from '../theme/colors';
 import RouteNames from './RouteNames';
 
@@ -47,11 +40,6 @@ const RootNavigator = ({navigation}) => {
         name={RouteNames.HOME}
         component={Home}
         options={{title: 'Home'}}
-      />
-      <Drawer.Screen
-        name={RouteNames.INFO}
-        component={Information}
-        options={{title: 'Information'}}
       />
       <Drawer.Screen
         name={RouteNames.REPORT}

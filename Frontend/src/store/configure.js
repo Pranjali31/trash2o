@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 import CountReducer from '../store/reducers';
 
 const rootReducer = combineReducers({
-  water: CountReducer,
+  trashApp: CountReducer,
 });
 
 const Configure = () => {
