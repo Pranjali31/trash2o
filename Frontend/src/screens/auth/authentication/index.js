@@ -1,16 +1,17 @@
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
+import {Button} from '@rneui/themed';
 import React, {useState} from 'react';
 import {
   Alert,
-  Button,
   StyleSheet,
   Text,
   TextInput,
   TouchableHighlight,
   View,
 } from 'react-native';
-import auth from '@react-native-firebase/auth';
-import {updateUserAuthentication} from '../../../store/actions';
 import {useDispatch} from 'react-redux';
+import {updateUserAuthentication} from '../../../store/actions';
 
 const Authentication = ({navigation}) => {
   const dispatch = useDispatch();
@@ -21,32 +22,60 @@ const Authentication = ({navigation}) => {
     navigation.navigate('Root');
   };
 
+  const navigateToCreateUser = () => {
+    navigation.navigate('CreateUser');
+  };
+
   const updateUserLogState = async (userEmail, userPassword) => {
+    let userData = {};
+    await database()
+      .ref('/trash/users')
+      .once('value')
+      .then(value => {
+        userData = Object.values(value.val())?.find(item => {
+          return item.email === userEmail;
+        });
+        console.log('value', value, userData);
+      });
     let user = {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
       email: userEmail,
       password: userPassword,
     };
     await dispatch(updateUserAuthentication(user));
   };
 
-  const createUser = async () => {
-    try {
-      await auth().createUserWithEmailAndPassword(email, password);
-      // navigation.naviagte('Root');
-    } catch (error) {
-      Alert.alert('', JSON.stringify(error));
-    }
-  };
-
   const signin = async () => {
     try {
-      console.log('email', email);
-      await auth().signInWithEmailAndPassword(email, password);
-      Alert.alert('Success');
-      navigateToHome();
+      await auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          Alert.alert('Success', 'Login Successfull');
+          updateUserLogState(email, password);
+          navigateToHome();
+        });
     } catch (error) {
-      console.log('error', error);
-      Alert.alert('', JSON.stringify(error));
+      console.log('error', error.code);
+      if (error.code === 'auth/email-already-in-use') {
+        Alert.alert(
+          'Authentication Error',
+          'That email address is already in use!',
+        );
+      } else if (
+        error.code === 'auth/invalid-email' ||
+        error.code === 'auth/wrong-password'
+      ) {
+        Alert.alert(
+          'Authentication Error',
+          'That email address or password is invalid!',
+        );
+      } else {
+        Alert.alert(
+          'Error',
+          'There is Something wrong with the Server, Please try again later',
+        );
+      }
     }
   };
 
@@ -57,38 +86,61 @@ const Authentication = ({navigation}) => {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Login/Sigup to tras.2ho</Text>
+      <Text style={styles.title}>Tras.2ho</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
         value={email}
         onChangeText={setEmail}
-        placeholder="E-mail"
+        placeholder="Please enter e-mail Id"
         keyboardType="email-address"
         autoCompleteType="off"
+        placeholderTextColor={'gray'}
       />
       <Text style={styles.label}>Password</Text>
       <TextInput
         style={styles.input}
         value={password}
         onChangeText={setPassword}
-        placeholder="Password"
+        placeholder="Please enter Password"
         secureTextEntry={true}
+        placeholderTextColor={'gray'}
       />
       <View style={styles.buttons}>
         <Button
-          title="signin"
+          buttonStyle={{
+            borderRadius: 10,
+            borderWidth: 5,
+            borderColor: 'black',
+          }}
+          raised
+          titleStyle={{paddingVertical: 5, paddingHorizontal: 10}}
+          size="md"
+          title="Sign In"
           onPress={() => signin(email, password, navigateToHome)}
         />
-        <Button title="Create" onPress={() => createUser(email, password)} />
+        <Button
+          buttonStyle={{
+            borderRadius: 10,
+            borderWidth: 5,
+            borderColor: 'black',
+          }}
+          style
+          raised
+          titleStyle={{paddingVertical: 5, paddingHorizontal: 10}}
+          size="md"
+          title="Sign Up"
+          onPress={() => navigateToCreateUser()}
+        />
       </View>
       <TouchableHighlight
-        underlayColor={'blue'}
-        activeOpacity={0.1}
+        style={{paddingTop: 10}}
+        activeOpacity={0.6}
+        underlayColor="#DDDDDD"
         onPress={() => {
           onSkipPress();
         }}>
-        <Text style={{color: 'black', paddingTop: 10}}>SKIP</Text>
+        <Text style={{color: 'black', paddingTop: 10, fontSize: 10}}>SKIP</Text>
       </TouchableHighlight>
     </View>
   );
@@ -101,10 +153,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#dfe2f0',
   },
   title: {
     color: '#143b7a',
-    fontSize: 21,
+    fontSize: 40,
     marginBottom: 30,
     fontWeight: 'bold',
     textDecorationLine: 'underline',
@@ -125,7 +178,7 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   buttons: {
-    width: 150,
+    width: 230,
     marginTop: 30,
     flexDirection: 'row',
     justifyContent: 'space-around',

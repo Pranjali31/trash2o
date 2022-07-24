@@ -2,12 +2,16 @@ import database from '@react-native-firebase/database';
 import {useFocusEffect} from '@react-navigation/native';
 import {Avatar, ListItem, Chip} from '@rneui/themed';
 import React, {useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import Colors from '../../theme/colors';
+import {useSelector} from 'react-redux';
+import {getBrandName, getCategoryName} from '../../utils/functions';
+import moment from 'moment';
 
 const UserLogs = () => {
   const [logs, setlogs] = useState([]);
   const [total, setTotal] = useState(0);
+  const userAuth = useSelector(state => state.trashApp.userAuth);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -29,7 +33,10 @@ const UserLogs = () => {
       .ref('/trash/userRecords')
       .once('value')
       .then(value => {
-        setlogs(Object.values(value.val()));
+        let userLogs = Object.values(value.val())?.filter(item => {
+          return item.email === userAuth.email;
+        });
+        setlogs(userLogs);
       });
   };
 
@@ -58,27 +65,60 @@ const UserLogs = () => {
                 }}
               />
               <ListItem.Content>
-                <ListItem.Title>{'Log ' + (logs?.length - i)}</ListItem.Title>
+                <View style={{flexDirection: 'row', paddingBottom: 10}}>
+                  <ListItem.Title style={styles.titleStyle}>
+                    {'Log ' + (logs?.length - i)}
+                  </ListItem.Title>
+                  <ListItem.Title style={styles.title2Style}>
+                    {moment(l.date).format('MMMM Do YYYY, h:mm:ss a')}
+                  </ListItem.Title>
+                </View>
                 <View style={{flexDirection: 'row'}}>
                   <ListItem.Subtitle style={{color: 'blue', fontSize: 20}}>
                     {l.totalCups}
                   </ListItem.Subtitle>
                   <ListItem.Subtitle style={{paddingTop: 5}}>
-                    {'x times refilled container of capacity '}
+                    {'x times comsumed  '}
                   </ListItem.Subtitle>
                   <ListItem.Subtitle style={{color: 'blue', fontSize: 20}}>
                     {l.waterQty}
                   </ListItem.Subtitle>
+                  <ListItem.Subtitle style={{paddingTop: 5}}>
+                    {' ounces'}
+                  </ListItem.Subtitle>
                 </View>
                 <View style={{flexDirection: 'row'}}>
                   <ListItem.Subtitle style={{paddingTop: 5}}>
-                    {'Reward Earned '}
+                    {'Reward Earned: '}
                   </ListItem.Subtitle>
                   <ListItem.Subtitle style={{color: 'red', fontSize: 20}}>
                     {l.pointsEarned}
                   </ListItem.Subtitle>
                 </View>
-                <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
+                <View style={styles.subtitleViewStyle}>
+                  <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                    {'Brand Name: '}
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                    {getBrandName(l.brand)?.label}
+                  </ListItem.Subtitle>
+                </View>
+                <View style={styles.subtitleViewStyle}>
+                  <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                    {'Category Name: '}
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                    {getCategoryName(l.category)?.label}
+                  </ListItem.Subtitle>
+                </View>
+                <View style={styles.subtitleViewStyle}>
+                  <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                    {'Total: '}
+                  </ListItem.Subtitle>
+                  <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                    {l.totalWaterSaved}
+                  </ListItem.Subtitle>
+                </View>
               </ListItem.Content>
             </ListItem>
           ))
@@ -91,3 +131,22 @@ const UserLogs = () => {
 };
 
 export default UserLogs;
+
+const styles = StyleSheet.create({
+  titleStyle: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+  },
+  subtitleViewStyle: {
+    flexDirection: 'row',
+  },
+  subtitleLabelStyle: {
+    fontStyle: 'italic',
+  },
+  title2Style: {
+    paddingLeft: 80,
+    fontStyle: 'italic',
+    fontSize: 12,
+    marginTop: 2,
+  },
+});

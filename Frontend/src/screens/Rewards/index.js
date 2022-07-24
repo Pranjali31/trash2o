@@ -1,8 +1,9 @@
 import database from '@react-native-firebase/database';
 import {useFocusEffect} from '@react-navigation/native';
-import {Chip} from '@rneui/themed';
+import {Chip, PricingCard} from '@rneui/themed';
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {ScrollView, View} from 'react-native';
+import {couponData} from '../../utils/data';
 
 const Rewards = () => {
   const [logs, setlogs] = useState([]);
@@ -44,6 +45,21 @@ const Rewards = () => {
         }}
         containerStyle={{marginVertical: 15, marginHorizontal: 30}}
       />
+      <ScrollView style={{marginBottom: 50}}>
+        {couponData.map((item, index) => {
+          return (
+            <View key={index}>
+              <PricingCard
+                color={item?.color}
+                title={item?.title}
+                price={item?.price}
+                info={item?.info}
+                button={item?.button}
+              />
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };

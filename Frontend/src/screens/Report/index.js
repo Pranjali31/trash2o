@@ -1,11 +1,15 @@
 import database from '@react-native-firebase/database';
 import {useFocusEffect} from '@react-navigation/native';
-import React, {useState} from 'react';
-import {Dimensions, Text, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
+import {ListItem, Avatar} from '@rneui/themed';
+import {getBrandName, getCategoryName} from '../../utils/functions';
+import colors from '../../theme/colors';
 
 const Report = () => {
   const [logs, setlogs] = useState([]);
+  const [topLogs, setTopLogs] = useState([]);
 
   const screenWidth = Dimensions.get('window').width;
 
@@ -26,6 +30,14 @@ const Report = () => {
     }, []),
   );
 
+  useEffect(() => {
+    let sortedArray = logs;
+    sortedArray = sortedArray?.sort((a, b) => {
+      return b.totalWaterSaved - a.totalWaterSaved;
+    });
+    setTopLogs(sortedArray?.slice(0, 3));
+  }, [logs]);
+
   const getLogsFromDB = () => {
     database()
       .ref('/trash/userRecords')
@@ -37,10 +49,12 @@ const Report = () => {
   };
 
   return (
-    <View style={{backgroundColor: 'black'}}>
-      <View style={{padding: '2%'}}>
-        <Text>Your latest 7 Logs </Text>
-      </View>
+    <View style={{backgroundColor: 'black', flex: 1}}>
+      {logs?.length > 0 && (
+        <View style={{padding: '2%'}}>
+          <Text style={{fontSize: 18}}>Your latest {logs?.length} Logs </Text>
+        </View>
+      )}
 
       {logs.length > 0 && (
         <LineChart
@@ -70,8 +84,76 @@ const Report = () => {
           chartConfig={chartConfig}
         />
       )}
+      <View style={{flex: 1}}>
+        <Text style={styles.listTitleStyle}>Top #3 Comsumed Items</Text>
+        {topLogs?.length > 0 &&
+          topLogs?.map((l, index) => {
+            return (
+              <ListItem key={index} bottomDivider style={{flex: 1}}>
+                <Avatar
+                  icon={{
+                    name: 'cup',
+                    type: 'entypo',
+                    color: colors.lightRed,
+                    size: 30,
+                  }}
+                />
+                <ListItem.Content>
+                  <View style={styles.subtitleViewStyle}>
+                    <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                      {'Brand Name: '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                      {getBrandName(l.brand)?.label}
+                    </ListItem.Subtitle>
+                  </View>
+                  <View style={styles.subtitleViewStyle}>
+                    <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                      {'Category Name: '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                      {getCategoryName(l.category)?.label}
+                    </ListItem.Subtitle>
+                  </View>
+                  <View style={styles.subtitleViewStyle}>
+                    <ListItem.Subtitle style={styles.subtitleLabelStyle}>
+                      {'Total: '}
+                    </ListItem.Subtitle>
+                    <ListItem.Subtitle style={{fontWeight: 'bold'}}>
+                      {l.totalWaterSaved}
+                    </ListItem.Subtitle>
+                  </View>
+                </ListItem.Content>
+              </ListItem>
+            );
+          })}
+      </View>
     </View>
   );
 };
 
 export default Report;
+
+const styles = StyleSheet.create({
+  listTitleStyle: {
+    paddingTop: 5,
+    paddingBottom: 10,
+    fontSize: 20,
+  },
+  titleStyle: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+  },
+  subtitleViewStyle: {
+    flexDirection: 'row',
+  },
+  subtitleLabelStyle: {
+    fontStyle: 'italic',
+  },
+  title2Style: {
+    paddingLeft: 80,
+    fontStyle: 'italic',
+    fontSize: 12,
+    marginTop: 2,
+  },
+});

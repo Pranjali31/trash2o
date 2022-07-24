@@ -1,5 +1,6 @@
 import database from '@react-native-firebase/database';
 import moment from 'moment';
+import {calculateRewardPoints} from '../../utils/functions';
 
 export const addWaterToDB = item => {
   database()
@@ -10,14 +11,23 @@ export const addWaterToDB = item => {
       totalCups: item.totalCups,
       totalWaterSaved: item.totalWaterSaved,
       date: moment().format(),
-      pointsEarned: item.totalWaterSaved,
+      pointsEarned: calculateRewardPoints(item.category),
+      brand: item.brand,
+      category: item.category,
+      firstName: item.firstName,
+      lastName: item.lastName,
     })
     .then(() => console.log('Data updated.'));
 };
 
-export const getUserRecords = item => {
-  // database()
-  //   .ref('/trash/userRecords')
-  //   .once('value')
-  //   .then(value => console.log('value', value.val()));
+export const createUserToDB = item => {
+  database()
+    .ref('/trash/users')
+    .push({
+      firstName: item.firstName,
+      lastName: item.lastName,
+      email: item.email,
+      password: item.password,
+    })
+    .then(() => console.log('Created New User.'));
 };

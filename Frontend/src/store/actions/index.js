@@ -7,7 +7,11 @@ import {
   GET_LOGS,
 } from '../Constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {addWaterToDB, getUserRecords} from '../reducers/databaseService';
+import {
+  addWaterToDB,
+  createUserToDB,
+  getUserRecords,
+} from '../reducers/databaseService';
 
 export const setAppReady = () => {
   return {type: APP_READY};
@@ -32,6 +36,9 @@ export const resetDailyConsumption = () => {
 };
 
 export const updateUserAuthentication = authState => {
+  if (authState.new) {
+    createUserToDB(authState);
+  }
   return {type: USER_AUTH, payload: authState};
 };
 

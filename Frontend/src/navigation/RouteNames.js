@@ -8,4 +8,5 @@ export default {
   REFILL: 'REFILL',
   REPORT: 'REPORT',
   ABOUTUS: 'ABOUTUS',
+  USERPROFILE: 'USERPROFILE',
 };

@@ -1,16 +1,29 @@
 import {Button, Slider} from '@rneui/themed';
 import React, {useState} from 'react';
-import {Alert, Dimensions, StyleSheet, Text, View} from 'react-native';
+import {
+  Alert,
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {CustomButton, Icons} from '../../components/atoms';
 import {addWater} from '../../store/actions';
 import Colors from '../../theme/colors';
+import {Dropdown} from 'react-native-element-dropdown';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import * as DATA from '../../utils/data';
 
 const AddLogScreen = ({navigation}) => {
   const dispatch = useDispatch();
 
   const [quantitySelected, setQuantitySelected] = useState(12);
   const [cupsSelected, setCupsSelected] = useState(1);
+
+  const [value, setValue] = useState(null);
+  const [categoryValue, setCategoryValue] = useState();
 
   const userAuth = useSelector(state => state.trashApp.userAuth);
 
@@ -28,30 +41,111 @@ const AddLogScreen = ({navigation}) => {
   const resetData = async () => {
     await setQuantitySelected(12);
     await setCupsSelected(1);
+    await setValue(null);
+    await setCategoryValue(null);
   };
 
   const addWaterProgress = async () => {
-    const ouncesSelected = +(quantitySelected * cupsSelected);
-    const updatedDailyConsumption = ouncesSelected;
-    let logData = {
-      email: userAuth.email,
-      waterQty: quantitySelected,
-      totalCups: cupsSelected,
-      totalWaterSaved: ouncesSelected,
-    };
-    if (ouncesSelected > 0) {
-      await dispatch(addWater(logData));
+    if (value != null && categoryValue != null) {
+      const ouncesSelected = +(quantitySelected * cupsSelected);
+      const updatedDailyConsumption = ouncesSelected;
+      let logData = {
+        firstName: userAuth.firstName,
+        lastName: userAuth.lastName,
+        email: userAuth.email,
+        waterQty: quantitySelected,
+        totalCups: cupsSelected,
+        totalWaterSaved: ouncesSelected,
+        brand: value,
+        category: categoryValue,
+      };
+      if (ouncesSelected > 0) {
+        await dispatch(addWater(logData));
+        Alert.alert(
+          'Log Added Successfully',
+          'Your  cuurent intake is : ' + updatedDailyConsumption + ' OZ',
+        );
+        resetData();
+      }
+    } else if (value == null) {
       Alert.alert(
-        'Log Added Successfully',
-        'Your  cuurent intake is : ' + updatedDailyConsumption + ' OZ',
+        'Please Enter a Brand',
+        'You must select a brand name to Add Log',
       );
-      resetData();
+    } else if (categoryValue == null) {
+      Alert.alert(
+        'Please Enter a Category',
+        'You must select a Category  to Add Log',
+      );
+    } else {
+      console.log('Validation Error');
     }
   };
 
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <Text style={styles.headerStyle}>Tras.h20</Text>
+      <Text style={styles.drowndownLabelStyle}>
+        {' <     Please select brand     >'}
+      </Text>
+      <Dropdown
+        activeColor="gray"
+        containerStyle={styles.containerDropdownStyle}
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        iconStyle={styles.iconStyle}
+        data={DATA.brandDropdownData}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder="Select a brand"
+        searchPlaceholder="Search..."
+        value={value}
+        onChange={item => {
+          setValue(item.value);
+        }}
+        renderLeftIcon={() => (
+          <AntDesign
+            style={styles.icon}
+            color="black"
+            name="Safety"
+            size={20}
+          />
+        )}
+      />
+      <Text style={styles.drowndownLabelStyle}>
+        {' <     Please select Category     >'}
+      </Text>
+      <Dropdown
+        activeColor="gray"
+        containerStyle={styles.containerDropdownStyle}
+        style={styles.dropdown}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        iconStyle={styles.iconStyle}
+        data={DATA.categoryDropdownData}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        searchPlaceholder="Search..."
+        value={categoryValue}
+        onChange={item => {
+          setCategoryValue(item.value);
+        }}
+        renderLeftIcon={() => (
+          <AntDesign
+            style={styles.icon}
+            color="black"
+            name="Safety"
+            size={20}
+          />
+        )}
+      />
       <View style={styles.pickerSection}>
         <Text style={styles.title}>Your Container Size?</Text>
 
@@ -62,7 +156,7 @@ const AddLogScreen = ({navigation}) => {
             maximumValue={100}
             step={2}
             thumbTintColor={Colors.accentColorBlue}
-            onValueChange={value => setQuantitySelected(value)}
+            onValueChange={v => setQuantitySelected(v)}
           />
           <Text style={styles.sliderText}>{quantitySelected}oz</Text>
         </View>
@@ -114,7 +208,7 @@ const AddLogScreen = ({navigation}) => {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -126,12 +220,19 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primaryColor,
     padding: 10,
   },
+  drowndownLabelStyle: {
+    alignSelf: 'center',
+    paddingTop: '5%',
+    paddingBottom: '1%',
+  },
   title: {
     fontSize: 20,
     color: 'white',
+    marginTop: -50,
   },
   androidFocusButtons: {
     margin: 0,
+    marginTop: 10,
     paddingLeft: '20%',
     paddingRight: '20%',
     padding: '1%',
@@ -158,8 +259,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   quantityText: {
-    // fontFamily: 'inconsolata-regular',
-    fontSize: 50,
+    fontSize: 45,
     color: 'white',
   },
   sliderStyle: {
@@ -169,7 +269,6 @@ const styles = StyleSheet.create({
     maxWidth: '60%',
   },
   sliderText: {
-    // fontFamily: 'inconsolata-regular',
     textAlign: 'center',
     fontSize: 35,
     color: 'white',
@@ -191,8 +290,37 @@ const styles = StyleSheet.create({
   headerStyle: {
     alignSelf: 'center',
     fontSize: 30,
-    marginBottom: -30,
+    //  marginBottom: -30,
     marginTop: 20,
     fontWeight: 'bold',
+  },
+  dropdown: {
+    margin: 16,
+    height: 50,
+    borderBottomColor: 'gray',
+    borderBottomWidth: 0.5,
+    backgroundColor: 'black',
+  },
+  icon: {
+    marginRight: 5,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  containerDropdownStyle: {
+    backgroundColor: 'black',
+    marginTop: 20,
+    flex: 1,
   },
 });

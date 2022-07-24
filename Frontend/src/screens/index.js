@@ -7,7 +7,8 @@ import Report from './Report';
 import Rewards from './Rewards';
 import LeaderBoards from './leaderboards';
 import AboutUs from './aboutUs';
-import {Authentication} from './auth';
+import UserProfile from './userProfile';
+import {Authentication, CreateUser} from './auth';
 
 export {
   NotFoundScreen,
@@ -20,4 +21,6 @@ export {
   Report,
   Rewards,
   Authentication,
+  UserProfile,
+  CreateUser,
 };

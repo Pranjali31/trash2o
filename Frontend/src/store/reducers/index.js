@@ -5,6 +5,7 @@ import {
   USER_AUTH,
   ADD_WATER,
   GET_LOGS,
+  CREATE_USER,
 } from '../Constants';
 
 const initialState = {
