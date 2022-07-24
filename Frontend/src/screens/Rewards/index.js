@@ -4,10 +4,13 @@ import {Chip, PricingCard} from '@rneui/themed';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import {couponData} from '../../utils/data';
+import {useSelector} from 'react-redux';
 
 const Rewards = () => {
   const [logs, setlogs] = useState([]);
   const [total, setTotal] = useState(0);
+
+  const userAuth = useSelector(state => state.trashApp.userAuth);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -29,7 +32,10 @@ const Rewards = () => {
       .ref('/trash/userRecords')
       .once('value')
       .then(value => {
-        setlogs(Object.values(value.val()));
+        let userLogs = Object.values(value.val())?.filter(item => {
+          return item.email === userAuth.email;
+        });
+        setlogs(userLogs);
       });
   };
 

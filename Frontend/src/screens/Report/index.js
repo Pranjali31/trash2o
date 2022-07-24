@@ -5,6 +5,7 @@ import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import {ListItem, Avatar} from '@rneui/themed';
 import {getBrandName, getCategoryName} from '../../utils/functions';
+import {useSelector} from 'react-redux';
 import colors from '../../theme/colors';
 
 const Report = () => {
@@ -12,6 +13,7 @@ const Report = () => {
   const [topLogs, setTopLogs] = useState([]);
 
   const screenWidth = Dimensions.get('window').width;
+  const userAuth = useSelector(state => state.trashApp.userAuth);
 
   const chartConfig = {
     backgroundGradientFrom: '#1E2923',
@@ -44,7 +46,10 @@ const Report = () => {
       .limitToLast(7)
       .once('value')
       .then(value => {
-        setlogs(Object.values(value.val()));
+        let userLogs = Object.values(value.val())?.filter(item => {
+          return item.email === userAuth.email;
+        });
+        setlogs(userLogs);
       });
   };
 
@@ -56,7 +61,7 @@ const Report = () => {
         </View>
       )}
 
-      {logs.length > 0 && (
+      {logs?.length > 0 && (
         <LineChart
           data={{
             labels: [
@@ -70,7 +75,7 @@ const Report = () => {
             ],
             datasets: [
               {
-                data: logs.map(item => {
+                data: logs?.map(item => {
                   return item?.totalWaterSaved;
                 }),
                 color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
@@ -85,7 +90,9 @@ const Report = () => {
         />
       )}
       <View style={{flex: 1}}>
-        <Text style={styles.listTitleStyle}>Top #3 Comsumed Items</Text>
+        {topLogs?.length > 0 ? (
+          <Text style={styles.listTitleStyle}>Top #3 Comsumed Items</Text>
+        ) : null}
         {topLogs?.length > 0 &&
           topLogs?.map((l, index) => {
             return (

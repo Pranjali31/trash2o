@@ -84,7 +84,7 @@ const AddLogScreen = ({navigation}) => {
 
   return (
     <ScrollView style={styles.screen}>
-      <Text style={styles.headerStyle}>Tras.h20</Text>
+      <Text style={styles.headerStyle}>Tras.h2O</Text>
       <Text style={styles.drowndownLabelStyle}>
         {' <     Please select brand     >'}
       </Text>

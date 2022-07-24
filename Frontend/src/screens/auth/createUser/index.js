@@ -22,27 +22,49 @@ const CreateUser = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   const createUser = async () => {
-    try {
-      await auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(() => {
-          updateUserLogState(email, password);
-          Alert.alert('Success', 'New user created Successfully');
-          navigation.navigate('Root');
-        });
-    } catch (error) {
-      console.log('error', error);
-      if (error.code === 'auth/email-already-in-use') {
-        Alert.alert(
-          'Authentication Error',
-          JSON.stringify('That email address is already in use!'),
-        );
-      } else {
-        Alert.alert(
-          'Error',
-          'There is Something wrong with the Server, Please try again later',
-        );
+    if (
+      firstName?.trim() !== '' &&
+      lastName?.trim() !== '' &&
+      email?.trim() !== '' &&
+      password?.trim() !== '' &&
+      password?.length === 6
+    ) {
+      try {
+        await auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then(() => {
+            updateUserLogState(email, password);
+            Alert.alert('Success', 'New user created Successfully');
+            navigation.navigate('Root');
+            setEmail('');
+            setPassword('');
+            setFirstName('');
+            setLastName('');
+          });
+      } catch (error) {
+        console.log('error', error);
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert(
+            'Authentication Error',
+            JSON.stringify('That email address is already in use!'),
+          );
+        } else {
+          Alert.alert(
+            'Error',
+            'There is Something wrong with the Server, Please try again later',
+          );
+        }
       }
+    } else if (firstName?.trim() === '') {
+      Alert.alert('Validation Error', 'First Name is Required');
+    } else if (lastName?.trim() === '') {
+      Alert.alert('Validation Error', 'Last  Name is Required');
+    } else if (email?.trim() === '') {
+      Alert.alert('Validation Error', 'Email is Required');
+    } else if (password?.trim() === '' || password?.length !== 6) {
+      Alert.alert('Validation Error', 'Password is Required (Max length 6)');
+    } else {
+      Alert.alert('Server Error', 'Please try again later');
     }
   };
 
@@ -70,6 +92,7 @@ const CreateUser = ({navigation}) => {
           placeholder="Enter your first Name"
           keyboardType="email-address"
           autoCompleteType="off"
+          maxLength={15}
         />
         <Text style={styles.label}>Last Name</Text>
         <TextInput
@@ -80,6 +103,7 @@ const CreateUser = ({navigation}) => {
           placeholder="Enter your last Name"
           keyboardType="email-address"
           autoCompleteType="off"
+          maxLength={15}
         />
         <Text style={styles.label}>Email</Text>
         <TextInput
@@ -90,6 +114,7 @@ const CreateUser = ({navigation}) => {
           placeholder="Enter your E-mail"
           keyboardType="email-address"
           autoCompleteType="off"
+          maxLength={25}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
@@ -99,6 +124,7 @@ const CreateUser = ({navigation}) => {
           onChangeText={setPassword}
           placeholder="Enter your Password"
           secureTextEntry={true}
+          maxLength={6}
         />
         <View style={styles.buttons}>
           <Button

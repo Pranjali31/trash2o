@@ -66,7 +66,7 @@ const RootNavigator = ({navigation}) => {
       <Drawer.Screen
         name={RouteNames.LEADERBOARDS}
         component={LeaderBoards}
-        options={{title: 'LeaderBoards'}}
+        options={{title: 'Leaderboards'}}
       />
       <Drawer.Screen
         name={RouteNames.ABOUTUS}

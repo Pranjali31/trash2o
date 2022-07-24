@@ -19,6 +19,8 @@ const Authentication = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   const navigateToHome = () => {
+    setEmail('');
+    setPassword('');
     navigation.navigate('Root');
   };
 
@@ -35,7 +37,6 @@ const Authentication = ({navigation}) => {
         userData = Object.values(value.val())?.find(item => {
           return item.email === userEmail;
         });
-        console.log('value', value, userData);
       });
     let user = {
       firstName: userData.firstName,
@@ -47,35 +48,42 @@ const Authentication = ({navigation}) => {
   };
 
   const signin = async () => {
-    try {
-      await auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(() => {
-          Alert.alert('Success', 'Login Successfull');
-          updateUserLogState(email, password);
-          navigateToHome();
-        });
-    } catch (error) {
-      console.log('error', error.code);
-      if (error.code === 'auth/email-already-in-use') {
-        Alert.alert(
-          'Authentication Error',
-          'That email address is already in use!',
-        );
-      } else if (
-        error.code === 'auth/invalid-email' ||
-        error.code === 'auth/wrong-password'
-      ) {
-        Alert.alert(
-          'Authentication Error',
-          'That email address or password is invalid!',
-        );
-      } else {
-        Alert.alert(
-          'Error',
-          'There is Something wrong with the Server, Please try again later',
-        );
+    if (email?.trim() !== '' && password?.trim() !== '') {
+      try {
+        await auth()
+          .signInWithEmailAndPassword(email, password)
+          .then(() => {
+            Alert.alert('Login Successfull', 'Welcome to Tras.h2o');
+            updateUserLogState(email, password);
+            navigateToHome();
+          });
+      } catch (error) {
+        console.log('error', error.code);
+        if (error.code === 'auth/email-already-in-use') {
+          Alert.alert(
+            'Authentication Error',
+            'That email address is already in use!',
+          );
+        } else if (
+          error.code === 'auth/invalid-email' ||
+          error.code === 'auth/wrong-password'
+        ) {
+          Alert.alert(
+            'Authentication Error',
+            'That email address or password is invalid!',
+          );
+        } else {
+          Alert.alert(
+            'Error',
+            'There is Something wrong with the Server, Please try again later',
+          );
+        }
       }
+    } else {
+      Alert.alert(
+        'Validation Error',
+        'Please enter valid email and password to continue',
+      );
     }
   };
 
@@ -125,7 +133,6 @@ const Authentication = ({navigation}) => {
             borderWidth: 5,
             borderColor: 'black',
           }}
-          style
           raised
           titleStyle={{paddingVertical: 5, paddingHorizontal: 10}}
           size="md"
@@ -140,7 +147,9 @@ const Authentication = ({navigation}) => {
         onPress={() => {
           onSkipPress();
         }}>
-        <Text style={{color: 'black', paddingTop: 10, fontSize: 10}}>SKIP</Text>
+        <Text style={{color: '#dfe2f0', paddingTop: 10, fontSize: 10}}>
+          SKIP
+        </Text>
       </TouchableHighlight>
     </View>
   );
