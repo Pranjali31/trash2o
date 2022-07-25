@@ -82,7 +82,7 @@ const CreateUser = ({navigation}) => {
   return (
     <ScrollView contentContainerStyle={{paddingBottom: 200}}>
       <KeyboardAvoidingView style={styles.screen} behavior="height">
-        <Text style={styles.title}>Welcome to tras.2ho</Text>
+        <Text style={styles.title}>Welcome to tras.h2O</Text>
         <Text style={styles.label}>First Name</Text>
         <TextInput
           style={styles.input}

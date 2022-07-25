@@ -21,9 +21,8 @@ const Report = () => {
     backgroundGradientTo: '#08130D',
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
+    strokeWidth: 2,
     barPercentage: 0.5,
-    useShadowColorFromDataset: false, // optional
   };
 
   useFocusEffect(
@@ -33,8 +32,8 @@ const Report = () => {
   );
 
   useEffect(() => {
-    let sortedArray = logs;
-    sortedArray = sortedArray?.sort((a, b) => {
+    let sortedArray = [...logs];
+    sortedArray = sortedArray.sort((a, b) => {
       return b.totalWaterSaved - a.totalWaterSaved;
     });
     setTopLogs(sortedArray?.slice(0, 3));
@@ -43,11 +42,10 @@ const Report = () => {
   const getLogsFromDB = () => {
     database()
       .ref('/trash/userRecords')
-      .limitToLast(7)
       .once('value')
       .then(value => {
         let userLogs = Object.values(value.val())?.filter(item => {
-          return item.email === userAuth.email;
+          return item?.email === userAuth?.email;
         });
         setlogs(userLogs);
       });

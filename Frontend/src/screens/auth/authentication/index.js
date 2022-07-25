@@ -58,7 +58,6 @@ const Authentication = ({navigation}) => {
             navigateToHome();
           });
       } catch (error) {
-        console.log('error', error.code);
         if (error.code === 'auth/email-already-in-use') {
           Alert.alert(
             'Authentication Error',
@@ -73,10 +72,7 @@ const Authentication = ({navigation}) => {
             'That email address or password is invalid!',
           );
         } else {
-          Alert.alert(
-            'Error',
-            'There is Something wrong with the Server, Please try again later',
-          );
+          Alert.alert('Error', error.message);
         }
       }
     } else {
@@ -87,14 +83,24 @@ const Authentication = ({navigation}) => {
     }
   };
 
-  const onSkipPress = () => {
-    updateUserLogState('test@123.com', '123');
+  const onSkipPress = async () => {
+    let user = {
+      firstName: 'Ayush',
+      lastName: 'Msitry',
+      email: 'ayush0898@gmail.com',
+      password: '123456',
+    };
+    await dispatch(updateUserAuthentication(user));
     navigateToHome();
+  };
+
+  const onForgotPassword = () => {
+    navigation.navigate('ForgotPassword');
   };
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Tras.2ho</Text>
+      <Text style={styles.title}>Tras.h2O</Text>
       <Text style={styles.label}>Email</Text>
       <TextInput
         style={styles.input}
@@ -140,6 +146,24 @@ const Authentication = ({navigation}) => {
           onPress={() => navigateToCreateUser()}
         />
       </View>
+      <TouchableHighlight
+        style={{paddingTop: 10, alignSelf: 'flex-end', paddingRight: 40}}
+        activeOpacity={0.6}
+        underlayColor="#DDDDDD"
+        onPress={() => {
+          onForgotPassword();
+        }}>
+        <Text
+          style={{
+            color: '#0000EE',
+            paddingTop: 10,
+            fontSize: 15,
+            textDecorationLine: 'underline',
+            fontWeight: 'bold',
+          }}>
+          Forgot Password?
+        </Text>
+      </TouchableHighlight>
       <TouchableHighlight
         style={{paddingTop: 10}}
         activeOpacity={0.6}

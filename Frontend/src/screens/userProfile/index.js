@@ -9,6 +9,7 @@ const UserProfile = () => {
   const [logs, setlogs] = useState([]);
   const [total, setTotal] = useState(0);
   const [highestPoint, setHighestPoint] = useState(0);
+  const [totalCups, setTotalCups] = useState(0);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -19,8 +20,10 @@ const UserProfile = () => {
   useEffect(() => {
     let totalPoints = 0;
     let highestPoints = 0;
+    let cups = 0;
     logs?.length > 0 &&
       logs.map((item, index) => {
+        cups = cups + item?.totalCups;
         totalPoints = totalPoints + item.pointsEarned;
         if (highestPoints < item.pointsEarned) {
           highestPoints = item.pointsEarned;
@@ -28,6 +31,7 @@ const UserProfile = () => {
       });
     setTotal(totalPoints);
     setHighestPoint(highestPoints);
+    setTotalCups(cups);
   }, [logs]);
 
   const getLogsFromDB = () => {
@@ -54,14 +58,18 @@ const UserProfile = () => {
         style={{
           flexDirection: 'row',
           alignSelf: 'flex-start',
-          paddingTop: 150,
+          paddingTop: 130,
         }}>
         <Text style={styles.statsLabelStyle}>Total Points Earned :</Text>
-        <Text style={styles.statsValueStyle}>{total}</Text>
+        <Text style={styles.statsValueStyle}>{total} oz</Text>
       </View>
       <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
         <Text style={styles.statsLabelStyle}>Highest Comsumption :</Text>
-        <Text style={styles.statsValueStyle}>{highestPoint}</Text>
+        <Text style={styles.statsValueStyle}>{highestPoint} oz</Text>
+      </View>
+      <View style={{flexDirection: 'row', alignSelf: 'flex-start'}}>
+        <Text style={styles.statsLabelStyle}>Total Cups used:</Text>
+        <Text style={styles.statsValueStyle}>{totalCups} times</Text>
       </View>
     </View>
   );
@@ -105,7 +113,7 @@ const styles = StyleSheet.create({
   statsLabelStyle: {
     color: '#31c7cc',
     paddingTop: 10,
-    paddingLeft: 30,
+    paddingLeft: 20,
     fontSize: 25,
     fontStyle: 'italic',
   },

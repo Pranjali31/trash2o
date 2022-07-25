@@ -5,7 +5,7 @@ import {StatusBar} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
 import Navigation from './src/navigation';
-import {Authentication, CreateUser} from './src/screens';
+import {Authentication, CreateUser, ForgotPassword} from './src/screens';
 import Configure from './src/store/configure';
 
 const Stack = createStackNavigator();
@@ -35,6 +35,11 @@ const MainStack = () => {
       <Stack.Screen
         name="CreateUser"
         component={CreateUser}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ForgotPassword"
+        component={ForgotPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen
