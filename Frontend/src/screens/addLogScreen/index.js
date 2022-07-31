@@ -63,7 +63,7 @@ const AddLogScreen = ({navigation}) => {
         await dispatch(addWater(logData));
         Alert.alert(
           'Log Added Successfully',
-          'Your  cuurent intake is : ' + updatedDailyConsumption + ' OZ',
+          'Your  curent intake is : ' + updatedDailyConsumption + ' OZ',
         );
         resetData();
       }
