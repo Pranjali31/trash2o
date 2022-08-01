@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index component snapshot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "backgroundColor": "#050f24",
+      "flex": 1,
+      "paddingHorizontal": 10,
+      "paddingVertical": 20,
+    }
+  }
+>
+  <View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "paddingBottom": 100,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 10,
+          }
+        }
+      >
+        Tras.h2O is a one stop solution for getting to know the refill stations that are avaible nearby as well as recording the data of the usage and frequency of the refilling ,For each activity perfomred few points are added into the users account which could be used to redeem for a coupon from the ones that are availble.
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 10,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Tras.h2O's objective is to provide a platform and service that could contribute to the reusability of containers as well as motivate users to go green as well as encourage others to join in.
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 10,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Get to Know our team: 
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Ayush Kaushik Mistry 
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Harsh Bharath Nimmakuri 
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Karan Amitkumar Zaveri
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Marc Smith
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Parth Ashokbhai Patel 
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontSize": 20,
+            "fontStyle": "italic",
+            "fontWeight": "bold",
+            "lineHeight": 30,
+            "paddingHorizontal": 40,
+            "paddingTop": 20,
+          }
+        }
+      >
+        Pranjali Mukeshkumar Prajapati
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;

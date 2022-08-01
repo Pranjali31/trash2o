@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index component snapshot 1`] = `
+<View>
+  <Text>
+    Tras.h2o
+  </Text>
+</View>
+`;

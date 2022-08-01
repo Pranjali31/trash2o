@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index component snapshot 1`] = `
+<View
+  style={
+    Object {
+      "overflow": "hidden",
+    }
+  }
+  testID="RNE__ICON__CONTAINER"
+>
+  <View
+    accessibilityRole="button"
+    android_ripple={
+      Object {
+        "borderless": false,
+        "color": "rgba(0, 0, 0, 0.3)",
+        "radius": -5,
+      }
+    }
+    disabled={false}
+    testID="RNE__ICON__CONTAINER_ACTION"
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "justifyContent": "center",
+        }
+      }
+      testID="RNE__ICON"
+    >
+      <Text
+        allowFontScaling={false}
+        selectable={false}
+        style={
+          Array [
+            Object {
+              "color": "#0D110F",
+              "fontSize": 20,
+            },
+            Object {
+              "backgroundColor": "transparent",
+            },
+            Object {
+              "fontFamily": "Material Icons",
+              "fontStyle": "normal",
+              "fontWeight": "normal",
+            },
+            Object {},
+          ]
+        }
+        testID="RNE__ICON__Component"
+      >
+        ?
+      </Text>
+    </View>
+  </View>
+</View>
+`;

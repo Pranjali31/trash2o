@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index component snapshot 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginRight": 10,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "overflow": "hidden",
+      }
+    }
+    testID="RNE__ICON__CONTAINER"
+  >
+    <View
+      accessibilityRole="button"
+      android_ripple={
+        Object {
+          "borderless": false,
+          "color": "rgba(0, 0, 0, 0.3)",
+          "radius": -5,
+        }
+      }
+      disabled={false}
+      testID="RNE__ICON__CONTAINER_ACTION"
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "justifyContent": "center",
+          }
+        }
+        testID="RNE__ICON"
+      >
+        <Text
+          allowFontScaling={false}
+          selectable={false}
+          style={
+            Array [
+              Object {
+                "color": "white",
+                "fontSize": 30,
+              },
+              Object {
+                "backgroundColor": "transparent",
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+          testID="RNE__ICON__Component"
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,0 +1,981 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RefillLocations component snapshot 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "backgroundColor": "black",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - East
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at the stairs door
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - East
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at the stairs door
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - East
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Second floor - at the stairs door
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - East
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Third floor - at the stairs door
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - West
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at the elevators
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - West
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at the elevators
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Leddy Library - West
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Second floor - at the elevators
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        CAW - Student Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at the wall garden
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        CAW - Student Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at the wall garden
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        CAW - Student Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at health services
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Essex Hall - South
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground Floor - at front door
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Essex Hall - South
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor -  at room no 121
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Essex Hall - Norht
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at front door 
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        UoW Welcome Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        at the front desk
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Dillon Hall
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor -  at the stairs
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Dillon Hall
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at the stairs
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Chrysler Hall - North
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Cashiers Office
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Toldo building
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Near Starbucks
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Joyce Enterprenuership Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Near the offices
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        E.D. Lumley Center for Engineering Innovation
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Ground floor - at tim hortons
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        E.D. Lumley Center for Engineering Innovation
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at the CS lab
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Laurier Hall - International Student Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        First floor - at the front desk 
+      </Text>
+    </View>
+    <View
+      accessible={true}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(52, 52, 52, 0.3)",
+          "flex": 1,
+          "marginVertical": 3,
+          "padding": 15,
+        }
+      }
+    >
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontSize": 25,
+          }
+        }
+      >
+        Toldo Lancer Center
+      </Text>
+      <Text
+        accessibilityRole="text"
+        style={
+          Object {
+            "color": "white",
+            "fontStyle": "italic",
+          }
+        }
+      >
+        Near the badminton court
+      </Text>
+    </View>
+  </View>
+</RCTScrollView>
+`;
