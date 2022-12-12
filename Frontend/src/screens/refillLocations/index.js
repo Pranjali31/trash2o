@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   descriptionStyle: {
-    color: 'white',
+    color: 'pink',
     fontStyle: 'italic',
   },
 });
